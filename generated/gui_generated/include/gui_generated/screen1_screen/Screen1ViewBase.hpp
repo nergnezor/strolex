@@ -8,44 +8,31 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Image.hpp>
-#include <touchgfx/mixins/Draggable.hpp>
+#include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 #include <touchgfx/EasingEquations.hpp>
 #include <touchgfx/mixins/MoveAnimator.hpp>
-#include <touchgfx/widgets/TextureMapper.hpp>
-#include <touchgfx/widgets/AnimationTextureMapper.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
-  public:
+public:
     Screen1ViewBase();
     virtual ~Screen1ViewBase() {}
 
-  protected:
-    FrontendApplication &application()
-    {
-        return *static_cast<FrontendApplication *>(Application::getInstance());
+protected:
+    FrontendApplication& application() { 
+        return *static_cast<FrontendApplication*>(Application::getInstance()); 
     }
 
     /*
      * Member Declarations
      */
-    touchgfx::Draggable<touchgfx::ClickListener<touchgfx::Image>> rolex_urtavla;
-    touchgfx::MoveAnimator<touchgfx::Image> rolex_ring;
-    AnimationTextureMapper humidity;
+    touchgfx::ClickListener< touchgfx::Image > rolex_urtavla;
+    touchgfx::MoveAnimator< touchgfx::Image > rolex_ring;
+    touchgfx::ButtonWithLabel text;
 
-  private:
-    /*
-     * Callback Handler Declarations
-     */
-    // void buttonCallbackHandler(const touchgfx::AbstractButton& src);
-    void animationEndedCallbackHandler(const touchgfx::AnimationTextureMapper &src);
+private:
 
-    /*
-     * Callback Declarations
-     */
-    // touchgfx::Callback<Screen1ViewBase, const touchgfx::AbstractButton&> buttonCallback;
-    touchgfx::Callback<Screen1ViewBase, const touchgfx::AnimationTextureMapper &> animationEndedCallback;
 };
 
 #endif // SCREEN1_VIEW_BASE_HPP

@@ -6,8 +6,10 @@
 #include <touchgfx/hal/Types.hpp>
 #include <touchgfx/Bitmap.hpp>
 
-const uint16_t BITMAP_ROLEX1_RING_390_ID = 0; // Size: 390x390 pixels
-const uint16_t BITMAP_ROLEX1_URTAVLA_390_ID = 1; // Size: 390x390 pixels
+const uint16_t BITMAP_BLUE_BUTTONS_ROUND_SMALL_ID = 0; // Size: 170x60 pixels
+const uint16_t BITMAP_BLUE_BUTTONS_ROUND_SMALL_PRESSED_ID = 1; // Size: 170x60 pixels
+const uint16_t BITMAP_ROLEX1_RING_390_ID = 2; // Size: 390x390 pixels
+const uint16_t BITMAP_ROLEX1_URTAVLA_390_ID = 3; // Size: 390x390 pixels
 
 namespace BitmapDatabase
 {

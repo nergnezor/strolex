@@ -5,7 +5,7 @@
         "Components": [
           {
             "RelativeFilename": "rolex1-urtavla_390.png",
-            "Alpha": 255,
+            "Alpha": 0,
             "Name": "rolex_urtavla",
             "X": 0,
             "Y": 0,
@@ -13,7 +13,7 @@
             "Height": 390,
             "Type": "Image",
             "Visible": true,
-            "Draggable": true,
+            "Draggable": false,
             "Clickable": true,
             "Fadeable": false,
             "Moveable": false

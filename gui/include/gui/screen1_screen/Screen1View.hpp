@@ -5,7 +5,6 @@
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/AnimationTextureMapper.hpp>
 
-
 class Screen1View : public Screen1ViewBase
 {
 public:
@@ -14,12 +13,27 @@ public:
   virtual void setupScreen();
   virtual void tearDownScreen();
   // Declaring callback handler for Image
-  void ImageClickHandler(const Image& b, const ClickEvent& e);
-  void setupHand(TextureMapper& hand, const BitmapId bitmapId, int16_t clockRotationCenterX, int16_t clockRotationCenterY, int16_t rotationCenterX, int16_t rotationCenterY);
-  
+  void ImageClickHandler(const Image &b, const ClickEvent &e);
+  void animationEndedCallbackHandler(const touchgfx::AnimationTextureMapper &src);
+  void setupHand(TextureMapper &hand, const BitmapId bitmapId, int16_t clockRotationCenterX, int16_t clockRotationCenterY, int16_t rotationCenterX, int16_t rotationCenterY, int width, int height);
+
 protected:
   // Declaring callback type of box and clickEvent
-  Callback<Screen1View, const Image&, const ClickEvent&> ImageClickedCallback;
+      AnimationTextureMapper humidity;
+      AnimationTextureMapper humidity2;
+
+  Callback<Screen1View, const Image &, const ClickEvent &> ImageClickedCallback;
+  /*
+     * Callback Handler Declarations
+     */
+  // void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+
+  /*
+     * Callback Declarations
+     */
+  Callback<Screen1View, const AnimationTextureMapper &> animationEndedCallback;
+  private: 
+  void Screen1View::Rotate(touchgfx::AnimationTextureMapper &src);
 };
 
 #endif // SCREEN1_VIEW_HPP

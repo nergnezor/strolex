@@ -8,8 +8,17 @@
 using namespace touchgfx;
 #endif
 
+extern touchgfx::InternalFlashFont& getFont_seguisym_30_4bpp();
 
 touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId fontId)
 {
-  return 0;
+  switch(fontId)
+  {
+    
+    case Typography::TYPOGRAPHY_00:
+      return &(getFont_seguisym_30_4bpp());
+    
+    default:
+      return 0;
+  }
 }

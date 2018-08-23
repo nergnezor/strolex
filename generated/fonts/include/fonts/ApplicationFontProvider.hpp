@@ -8,6 +8,7 @@
 
 struct Typography
 {
+  static const touchgfx::FontId TYPOGRAPHY_00 = 0;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider
