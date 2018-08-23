@@ -1,0 +1,115 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Components": [
+          {
+            "RelativeFilename": "rolex1-urtavla_390.png",
+            "Alpha": 255,
+            "Name": "rolex_urtavla",
+            "X": 0,
+            "Y": 0,
+            "Width": 390,
+            "Height": 390,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": true,
+            "Clickable": true,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "rolex1-ring_390.png",
+            "Alpha": 255,
+            "Name": "rolex_ring",
+            "X": 0,
+            "Y": 0,
+            "Width": 390,
+            "Height": 390,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          }
+        ],
+        "Name": "Screen1"
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "Name": "Rolex",
+    "Resolution": {
+      "Width": 390,
+      "Height": 390
+    },
+    "SelectedColorDepth": 24,
+    "StartupScreenName": "Screen1",
+    "SelectedStartupLanguage": "GB",
+    "Skin": "Blue",
+    "TouchGfxPath": "touchgfx",
+    "UIPath": ".",
+    "ApplicationTemplate": {
+      "Name": "STM32L4R9I-DISCO",
+      "Version": "1.0.1",
+      "Description": "STM32L4R9I Discovery board",
+      "AvailableColorDepths": [
+        24
+      ],
+      "AvailableImageFormats": {
+        "24": {
+          "Opaque": "RGB888",
+          "NonOpaque": "ARGB8888"
+        }
+      },
+      "AvailableResolutions": [
+        {
+          "Width": 390,
+          "Height": 390
+        }
+      ],
+      "PhysicalButtons": [
+        {
+          "Key": 5,
+          "Name": "JOY_SEL"
+        },
+        {
+          "Key": 1,
+          "Name": "JOY_LEFT"
+        },
+        {
+          "Key": 2,
+          "Name": "JOY_RIGHT"
+        },
+        {
+          "Key": 3,
+          "Name": "JOY_DOWN"
+        },
+        {
+          "Key": 4,
+          "Name": "JOY_UP"
+        }
+      ],
+      "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets",
+      "PostGenerateCommand": "touchgfx update_project --project-file=target/IAR/application.ewp && touchgfx update_project --project-file=simulator/msvs/Application.vcxproj && touchgfx update_project --project-file=target/IAR8.x/application.ewp",
+      "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+      "RunSimulatorCommand": "build\\bin\\simulator.exe",
+      "CompileTargetCommand": "make -f target/gcc/Makefile -j8",
+      "FlashTargetCommand": "make -f target/gcc/Makefile flash"
+    }
+  },
+  "Version": "4.9.3",
+  "CreatedBy": "4.9.3"
+}

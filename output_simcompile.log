@@ -1,0 +1,16 @@
+Converting images
+Compiling gui/src/screen1_screen/Screen1View.cpp
+gui/src/screen1_screen/Screen1View.cpp: In member function 'virtual void Screen1View::setupScreen()':
+gui/src/screen1_screen/Screen1View.cpp:31:51: error: 'AnimationEndedCallback' was not declared in this scope
+     humidity.setTextureMapperAnimationEndedAction(AnimationEndedCallback);
+                                                   ^~~~~~~~~~~~~~~~~~~~~~
+gui/src/screen1_screen/Screen1View.cpp: In member function 'void Screen1View::ImageClickHandler(const touchgfx::Image&, const touchgfx::ClickEvent&)':
+gui/src/screen1_screen/Screen1View.cpp:49:21: error: 'class touchgfx::AnimationTextureMapper' has no member named 'is'
+       if (!humidity.is)
+                     ^~
+simulator/gcc/Makefile:211: recipe for target 'build/MINGW32_NT-6.2/gui/src/screen1_screen/Screen1View.o' failed
+make[2]: *** [build/MINGW32_NT-6.2/gui/src/screen1_screen/Screen1View.o] Error 1
+simulator/gcc/Makefile:173: recipe for target 'generate_assets' failed
+make[1]: *** [generate_assets] Error 2
+simulator/gcc/Makefile:31: recipe for target 'all' failed
+make: *** [all] Error 2
