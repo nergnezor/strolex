@@ -12,6 +12,8 @@ public:
   virtual ~Screen1View() {}
   virtual void setupScreen();
   virtual void tearDownScreen();
+  virtual void handleTickEvent();
+
   // Declaring callback handler for Image
   void ImageClickHandler(const Image &b, const ClickEvent &e);
   void animationEndedCallbackHandler(const touchgfx::AnimationTextureMapper &src);
@@ -19,8 +21,8 @@ public:
 
 protected:
   // Declaring callback type of box and clickEvent
-      AnimationTextureMapper humidity;
-      AnimationTextureMapper humidity2;
+  AnimationTextureMapper humidity;
+  AnimationTextureMapper humidity2;
 
   Callback<Screen1View, const Image &, const ClickEvent &> ImageClickedCallback;
   /*
@@ -32,8 +34,10 @@ protected:
      * Callback Declarations
      */
   Callback<Screen1View, const AnimationTextureMapper &> animationEndedCallback;
-  private: 
-  void Screen1View::Rotate(touchgfx::AnimationTextureMapper &src);
+    int tickCounter;
+
+private:
+  void Rotate(touchgfx::AnimationTextureMapper &src);
 };
 
 #endif // SCREEN1_VIEW_HPP

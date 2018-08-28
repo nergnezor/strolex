@@ -32,16 +32,16 @@ void Screen1View::setupHand(TextureMapper &hand, const BitmapId bitmapId, int16_
 void Screen1View::setupScreen()
 {
     rolex_urtavla.setClickAction(ImageClickedCallback);
-    int16_t width = text.getWidth();
-    int16_t height = text.getHeight();
+    int16_t width = button1.getWidth();
+    int16_t height = button1.getHeight();
     // setupHand(humidity, BITMAP_BLUE_BUTTONS_ROUND_SMALL_ID, 390 / 2, 390 / 2,390 / 2, 390 / 2, width, height);  //Placing the rotation centor of humidity hand at (103, 195)
     setupHand(humidity, BITMAP_BLUE_BUTTONS_ROUND_SMALL_ID, 390 / 2, 390 / 2, width / 2, 390 / 2, width, height); //Placing the rotation centor of humidity hand at (103, 195)
     // setupHand(humidity2, BITMAP_ROLEX1_RING_390_ID, 390 / 2, 390 / 2, 390 / 2, 390 / 2); //Placing the rotation centor of humidity hand at (103, 195)
     humidity.setTextureMapperAnimationEndedAction(animationEndedCallback);
     // remove(rolex_ring);
-    remove(text);
+    remove(button1);
 
-    add(humidity);
+    // add(humidity);
     // add(humidity2);
     // Rotate(humidity);
 }
@@ -68,7 +68,7 @@ void Screen1View::Rotate(touchgfx::AnimationTextureMapper &src)
 
 void Screen1View::ImageClickHandler(const Image &b, const ClickEvent &evt)
 {
-    ClickEvent::ClickEventType erik = evt.getType();
+    // ClickEvent::ClickEventType erik = evt.getType();
     if (&b == &rolex_urtavla && (&evt)->getType() == ClickEvent::ClickEventType::PRESSED)
     {
         //When HiddenBox is clicked move CoverBox
@@ -98,4 +98,46 @@ void Screen1View::animationEndedCallbackHandler(const touchgfx::AnimationTexture
         //Execute C++ code
         // animation.startAnimation(!animation.isReverse(), false, true);
     }
+}
+float ang = 0.0f;
+void Screen1View::handleTickEvent()
+{
+    ang += 0.1f;
+    int distance = 390 / 2;
+    int x = cos(ang) * distance;
+    int y = sin(ang) * distance;
+    // if (tickCounter % 10 == 0)
+    {
+        // rolex_ring.moveTo(x, y);
+    }
+
+    // // if (tickCounter % 108 == 0)
+    // if (tickCounter % 10 == 0)
+    // {
+    // 	if (++seconds >= 60)
+    //     {
+    //         seconds = 0;
+    //         if (++minutes >= 60)
+    //         {
+    //             minutes = 0;
+    //             if (++hours >= 24)
+    //             {
+    //                 hours = 0;
+    //             }
+    //         }
+    //     }
+
+    //     // Update humidity
+    //     // humidityEntropi = ((seconds*seconds+seconds*5+hours) % 180)/360.0f * 2*PI - PI/2;
+    //     // humidity.setupAnimation(AnimationTextureMapper::Z_ROTATION, humidityEntropi, 250, 0, EasingEquations::cubicEaseInOut);
+    //     // humidity.startAnimation();
+
+    //     // // Update pressure
+    //     // pressureEntropi = (((seconds+minutes+hours)*(seconds+minutes+hours)) % 180)/360.0f * 2*PI - PI/2;
+    //     // pressure.setupAnimation(AnimationTextureMapper::Z_ROTATION, pressureEntropi, 250, 0, EasingEquations::cubicEaseInOut);
+    //     // pressure.startAnimation();
+
+    //     // Update the clock
+    //     // analogClock.setTime24Hour(hours, minutes, seconds);
+    // }
 }

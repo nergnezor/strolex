@@ -5,7 +5,7 @@
         "Components": [
           {
             "RelativeFilename": "rolex1-urtavla_390.png",
-            "Alpha": 0,
+            "Alpha": 255,
             "Name": "rolex_urtavla",
             "X": 0,
             "Y": 0,
@@ -32,6 +32,23 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": true
+          },
+          {
+            "Pressed": "__designer\\blue_buttons_round_small_pressed.png",
+            "Released": "__designer\\blue_buttons_round_small.png",
+            "Alpha": 255,
+            "Style": "Style8",
+            "Name": "button1",
+            "X": 0,
+            "Y": 0,
+            "Width": 170,
+            "Height": 60,
+            "Type": "Button",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -50,6 +67,12 @@
       }
     ],
     "CustomContainerDefinitions": [],
+    "TextEntries": [
+      {
+        "TextEntryId": "SingleUseId2",
+        "IsResource": true
+      }
+    ],
     "Name": "Rolex",
     "Resolution": {
       "Width": 390,

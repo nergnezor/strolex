@@ -8,7 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Image.hpp>
-#include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 #include <touchgfx/EasingEquations.hpp>
 #include <touchgfx/mixins/MoveAnimator.hpp>
@@ -29,7 +29,7 @@ protected:
      */
     touchgfx::ClickListener< touchgfx::Image > rolex_urtavla;
     touchgfx::MoveAnimator< touchgfx::Image > rolex_ring;
-    touchgfx::ButtonWithLabel text;
+    touchgfx::Button button1;
 
 private:
 
