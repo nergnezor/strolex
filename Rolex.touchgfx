@@ -4,6 +4,25 @@
       {
         "Components": [
           {
+            "Color": {
+              "Red": 74,
+              "Green": 75,
+              "Blue": 76
+            },
+            "Alpha": 255,
+            "Name": "box1",
+            "X": 0,
+            "Y": 0,
+            "Width": 390,
+            "Height": 390,
+            "Type": "Box",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "RelativeFilename": "rolex1-urtavla_390.png",
             "Alpha": 255,
             "Name": "rolex_urtavla",
@@ -19,9 +38,9 @@
             "Moveable": false
           },
           {
-            "RelativeFilename": "rolex1-ring_390.png",
+            "RelativeFilename": "rolex1_390_numbers.png",
             "Alpha": 255,
-            "Name": "rolex_ring",
+            "Name": "rolex1_390_numbers1",
             "X": 0,
             "Y": 0,
             "Width": 390,
@@ -31,19 +50,59 @@
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
-            "Moveable": true
+            "Moveable": false
           },
           {
-            "Pressed": "__designer\\blue_buttons_round_small_pressed.png",
-            "Released": "__designer\\blue_buttons_round_small.png",
+            "Color": {
+              "Red": 74,
+              "Green": 75,
+              "Blue": 76
+            },
             "Alpha": 255,
-            "Style": "Style8",
-            "Name": "button1",
+            "Name": "box2",
+            "X": 170,
+            "Y": 0,
+            "Width": 61,
+            "Height": 36,
+            "Type": "Box",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "rolex_arrow.png",
+            "Alpha": 255,
+            "Name": "rolex_arrow1",
+            "X": 171,
+            "Y": 3,
+            "Width": 55,
+            "Height": 27,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId3",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 93,
+              "Green": 249,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea1",
             "X": 0,
             "Y": 0,
-            "Width": 170,
-            "Height": 60,
-            "Type": "Button",
+            "Width": 167,
+            "Height": 40,
+            "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -71,6 +130,10 @@
       {
         "TextEntryId": "SingleUseId2",
         "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId3",
+        "IsResource": false
       }
     ],
     "Name": "Rolex",

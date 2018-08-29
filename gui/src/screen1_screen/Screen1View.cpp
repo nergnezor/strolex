@@ -32,16 +32,16 @@ void Screen1View::setupHand(TextureMapper &hand, const BitmapId bitmapId, int16_
 void Screen1View::setupScreen()
 {
     rolex_urtavla.setClickAction(ImageClickedCallback);
-    int16_t width = button1.getWidth();
-    int16_t height = button1.getHeight();
+    int16_t width = rolex_arrow1.getWidth();
+    int16_t height = rolex_arrow1.getHeight();
     // setupHand(humidity, BITMAP_BLUE_BUTTONS_ROUND_SMALL_ID, 390 / 2, 390 / 2,390 / 2, 390 / 2, width, height);  //Placing the rotation centor of humidity hand at (103, 195)
-    setupHand(humidity, BITMAP_BLUE_BUTTONS_ROUND_SMALL_ID, 390 / 2, 390 / 2, width / 2, 390 / 2, width, height); //Placing the rotation centor of humidity hand at (103, 195)
+    setupHand(humidity, rolex_arrow1.getBitmap(), 390 / 2, 390 / 2, width / 2, 390 / 2, width, height); //Placing the rotation centor of humidity hand at (103, 195)
     // setupHand(humidity2, BITMAP_ROLEX1_RING_390_ID, 390 / 2, 390 / 2, 390 / 2, 390 / 2); //Placing the rotation centor of humidity hand at (103, 195)
     humidity.setTextureMapperAnimationEndedAction(animationEndedCallback);
     // remove(rolex_ring);
-    remove(button1);
+    remove(rolex_arrow1);
 
-    // add(humidity);
+    add(humidity);
     // add(humidity2);
     // Rotate(humidity);
 }
@@ -57,8 +57,8 @@ void Screen1View::Rotate(touchgfx::AnimationTextureMapper &src)
 {
     if (!isAnimating)
     {
-        angle += 10;
-        src.setupAnimation(AnimationTextureMapper::Z_ROTATION, angle, 50, 0, EasingEquations::cubicEaseInOut);
+        angle += 2 * PI;
+        src.setupAnimation(AnimationTextureMapper::Z_ROTATION, angle, 200, 0, EasingEquations::cubicEaseInOut);
         src.startAnimation();
         isAnimating = true;
         //Move CoverBox to x:550, y:210 with BounceOut easing in 90 Ticks
@@ -102,10 +102,10 @@ void Screen1View::animationEndedCallbackHandler(const touchgfx::AnimationTexture
 float ang = 0.0f;
 void Screen1View::handleTickEvent()
 {
-    ang += 0.1f;
-    int distance = 390 / 2;
-    int x = cos(ang) * distance;
-    int y = sin(ang) * distance;
+    // ang += 0.1f;
+    // int distance = 390 / 2;
+    // int x = cos(ang) * distance;
+    // int y = sin(ang) * distance;
     // if (tickCounter % 10 == 0)
     {
         // rolex_ring.moveTo(x, y);

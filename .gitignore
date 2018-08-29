@@ -1,6 +1,6 @@
 build
-config
 target/*/
 touchgfx
 simulator
 *.log
+generated

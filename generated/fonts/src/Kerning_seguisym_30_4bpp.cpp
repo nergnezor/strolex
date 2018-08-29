@@ -6,9 +6,14 @@ using namespace touchgfx;
 
 FONT_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::KerningNode kerning_seguisym_30_4bpp[] FONT_LOCATION_FLASH_ATTRIBUTE = {
+    {0x0079, -1},  // (First char = [0x0079, ], Second char = [0x003F, ], Kerning dist = -1) 
     {0x0045,  1},  // (First char = [0x0045, ], Second char = [0x004A, ], Kerning dist = 1) 
     {0x004A, -1},  // (First char = [0x004A, ], Second char = [0x004A, ], Kerning dist = -1) 
     {0x004B,  1},  // (First char = [0x004B, ], Second char = [0x004A, ], Kerning dist = 1) 
     {0x0052,  1},  // (First char = [0x0052, ], Second char = [0x004A, ], Kerning dist = 1) 
+    {0x0052, -1},  // (First char = [0x0052, ], Second char = [0x0067, ], Kerning dist = -1) 
+    {0x0052, -1},  // (First char = [0x0052, ], Second char = [0x006F, ], Kerning dist = -1) 
+    {0x004B, -1},  // (First char = [0x004B, ], Second char = [0x0077, ], Kerning dist = -1) 
+    {0x004B, -1},  // (First char = [0x004B, ], Second char = [0x0079, ], Kerning dist = -1) 
 };
 
