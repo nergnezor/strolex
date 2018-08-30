@@ -46,7 +46,7 @@
             "Width": 390,
             "Height": 390,
             "Type": "Image",
-            "Visible": true,
+            "Visible": false,
             "Draggable": false,
             "Clickable": false,
             "Fadeable": false,
@@ -72,6 +72,21 @@
             "Moveable": false
           },
           {
+            "RelativeFilename": "rolex1-ring_390.png",
+            "Alpha": 255,
+            "Name": "rolex1_ring_3901",
+            "X": 0,
+            "Y": 0,
+            "Width": 390,
+            "Height": 390,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "RelativeFilename": "rolex_arrow.png",
             "Alpha": 255,
             "Name": "rolex_arrow1",
@@ -87,7 +102,49 @@
             "Moveable": false
           },
           {
-            "TextId": "SingleUseId3",
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 0,
+            "Name": "textBgBox",
+            "X": 0,
+            "Y": 0,
+            "Width": 390,
+            "Height": 50,
+            "Type": "Box",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": true,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId2",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 48,
+              "Green": 48,
+              "Blue": 48
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea2",
+            "X": 0,
+            "Y": 0,
+            "Width": 167,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": true,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId2",
             "TextRotation": "0",
             "Color": {
               "Red": 93,
@@ -98,10 +155,10 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "textArea1",
-            "X": 0,
+            "X": 121,
             "Y": 0,
             "Width": 167,
-            "Height": 40,
+            "Height": 49,
             "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
@@ -130,10 +187,6 @@
       {
         "TextEntryId": "SingleUseId2",
         "IsResource": true
-      },
-      {
-        "TextEntryId": "SingleUseId3",
-        "IsResource": false
       }
     ],
     "Name": "Rolex",

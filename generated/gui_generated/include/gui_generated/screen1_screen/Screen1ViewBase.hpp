@@ -11,6 +11,8 @@
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
+#include <touchgfx/EasingEquations.hpp>
+#include <touchgfx/mixins/FadeAnimator.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -30,7 +32,10 @@ protected:
     touchgfx::ClickListener< touchgfx::Image > rolex_urtavla;
     touchgfx::Image rolex1_390_numbers1;
     touchgfx::Box box2;
+    touchgfx::Image rolex1_ring_3901;
     touchgfx::Image rolex_arrow1;
+    touchgfx::FadeAnimator< touchgfx::Box > textBgBox;
+    touchgfx::FadeAnimator< touchgfx::TextArea > textArea2;
     touchgfx::TextArea textArea1;
 
 private:

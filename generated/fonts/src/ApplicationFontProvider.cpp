@@ -8,7 +8,7 @@
 using namespace touchgfx;
 #endif
 
-extern touchgfx::InternalFlashFont& getFont_seguisym_30_4bpp();
+extern touchgfx::InternalFlashFont& getFont_Roboto_Regular_40_4bpp();
 
 touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId fontId)
 {
@@ -16,7 +16,7 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId fontId)
   {
     
     case Typography::TYPOGRAPHY_00:
-      return &(getFont_seguisym_30_4bpp());
+      return &(getFont_Roboto_Regular_40_4bpp());
     
     default:
       return 0;

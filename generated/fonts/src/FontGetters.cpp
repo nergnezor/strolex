@@ -6,15 +6,15 @@
 using namespace touchgfx;
 #endif
 
-// seguisym_30_4bpp
-extern const touchgfx::GlyphNode glyphs_seguisym_30_4bpp[];
-extern const uint8_t unicodes_seguisym_30_4bpp[];
-extern const touchgfx::KerningNode kerning_seguisym_30_4bpp[];
-touchgfx::InternalFlashFont& getFont_seguisym_30_4bpp();
+// Roboto_Regular_40_4bpp
+extern const touchgfx::GlyphNode glyphs_Roboto_Regular_40_4bpp[];
+extern const uint8_t unicodes_Roboto_Regular_40_4bpp[];
+extern const touchgfx::KerningNode kerning_Roboto_Regular_40_4bpp[];
+touchgfx::InternalFlashFont& getFont_Roboto_Regular_40_4bpp();
 
-touchgfx::InternalFlashFont& getFont_seguisym_30_4bpp()
+touchgfx::InternalFlashFont& getFont_Roboto_Regular_40_4bpp()
 {
-  static touchgfx::InternalFlashFont seguisym_30_4bpp(glyphs_seguisym_30_4bpp, 18, 30, 7, 4, 0, 1, unicodes_seguisym_30_4bpp, kerning_seguisym_30_4bpp, 63, 0);
-  return seguisym_30_4bpp;
+  static touchgfx::InternalFlashFont Roboto_Regular_40_4bpp(glyphs_Roboto_Regular_40_4bpp, 8, 40, 0, 4, 0, 1, unicodes_Roboto_Regular_40_4bpp, kerning_Roboto_Regular_40_4bpp, 63, 0);
+  return Roboto_Regular_40_4bpp;
 }
 

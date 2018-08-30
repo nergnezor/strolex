@@ -8,25 +8,9 @@ Producing additional output formats...
 STM32 ST-LINK CLI v3.2.0.0
 STM32 ST-LINK Command Line Interface
 
-ST-LINK SN : 066DFF504955857567054154
-ST-LINK Firmware version : V2J29M18
-Connected via SWD.
-SWD Frequency = 4000K.
-Target voltage = 3.2 V.
-Connection mode : Normal.
-Device ID:0x470 
-Device flash Size : 2048 Kbytes
-Device family :STM32L4Rx
-
-Loading file...
-Flash Programming:
-  File : build/bin/target.hex
-  Address : 0x08000000
-The elf loader file is not accessible.
-
-MCU Reset.
-
-target/gcc/Makefile:406: recipe for target '_extflash_' failed
-make[1]: *** [_extflash_] Error 12
+Unexpected error
+Unable to connect to ST-LINK!
+target/gcc/Makefile:407: recipe for target '_extflash_' failed
+make[1]: *** [_extflash_] Error 2
 target/gcc/Makefile:79: recipe for target 'flash' failed
 make: *** [flash] Error 2

@@ -6,11 +6,27 @@
         {
             "label": "echo",
             "type": "shell",
-            "command": " C:/TouchGFX/4.9.3/env/MinGW/msys/1.0/msys.bat",
+            // "command": "make",
+            "command": "/c/Users/erikr/Downloads/make.exe",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
+            "args": [
+                // "-f", "C:/TouchGFXProjects/Rolex/target/gcc/Makefile"
+                // "-f", "'${workspaceFolder}/target/gcc/Makefile'"
+                // "-f", "simulator/gcc/Makefile"
+                "-f",
+                "target/gcc/Makefile",
+                "flash"
+            ],
+            // "options": {
+            //     "shell": {
+            //         // "executable": "%PROGRAMFILES%/Git/bin/sh.exe"
+            //         "executable": "C:/Program Files/Git/bin/bash.exe"
+            //     },
+            //     "cwd": "${workspaceFolder}"
+            // }
         }
     ]
 }
