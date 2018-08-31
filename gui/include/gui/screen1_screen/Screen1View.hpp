@@ -62,6 +62,10 @@ private:
   TextAreaWithOneWildcard txt;
   Unicode::UnicodeChar txtBuffer[10];
   void updateTxt(int newValue);
+  void demo(void);
+  void bezelShrink();
+  void scrollText();
+
   // Box10x10 box;
   // PainterRGB888 myPainter;
   // Canvas canvas;

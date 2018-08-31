@@ -8,23 +8,27 @@
 
 Screen1ViewBase::Screen1ViewBase()  
 {
-    box1.setPosition(0, 0, 390, 390);
-    box1.setColor(touchgfx::Color::getColorFrom24BitRGB(74, 75, 76));
+    bgBox.setPosition(0, 0, 390, 390);
+    bgBox.setColor(touchgfx::Color::getColorFrom24BitRGB(74, 75, 76));
 
-    rolex_urtavla.setXY(0, 0);
-    rolex_urtavla.setBitmap(Bitmap(BITMAP_ROLEX1_URTAVLA_390_ID));
+    scalableImage1.setBitmap(Bitmap(BITMAP_ROLEX1_RING_390_ID));
+    scalableImage1.setPosition(0, 0, 390, 390);
+    scalableImage1.setScalingAlgorithm(ScalableImage::NEAREST_NEIGHBOR);
 
     rolex1_390_numbers1.setXY(0, 0);
     rolex1_390_numbers1.setVisible(false);
     rolex1_390_numbers1.setBitmap(Bitmap(BITMAP_ROLEX1_390_NUMBERS_ID));
 
-    box2.setPosition(170, 0, 61, 36);
-    box2.setColor(touchgfx::Color::getColorFrom24BitRGB(74, 75, 76));
-
     rolex1_ring_3901.setXY(0, 0);
+    rolex1_ring_3901.setVisible(false);
     rolex1_ring_3901.setBitmap(Bitmap(BITMAP_ROLEX1_RING_390_ID));
 
+    box2.setPosition(170, 0, 61, 50);
+    box2.setVisible(false);
+    box2.setColor(touchgfx::Color::getColorFrom24BitRGB(74, 75, 76));
+
     rolex_arrow1.setXY(171, 3);
+    rolex_arrow1.setVisible(false);
     rolex_arrow1.setBitmap(Bitmap(BITMAP_ROLEX_ARROW_ID));
 
     textBgBox.setPosition(0, 0, 390, 50);
@@ -41,13 +45,17 @@ Screen1ViewBase::Screen1ViewBase()
     textArea1.setLinespacing(0);
     textArea1.setTypedText(TypedText(T_SINGLEUSEID2));
 
-    add(box1);
-    add(rolex_urtavla);
+    rolex_urtavla.setXY(0, 0);
+    rolex_urtavla.setBitmap(Bitmap(BITMAP_ROLEX1_URTAVLA_390_ID));
+
+    add(bgBox);
+    add(scalableImage1);
     add(rolex1_390_numbers1);
-    add(box2);
     add(rolex1_ring_3901);
+    add(box2);
     add(rolex_arrow1);
     add(textBgBox);
     add(textArea2);
     add(textArea1);
+    add(rolex_urtavla);
 }

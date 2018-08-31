@@ -8,11 +8,13 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/ScalableImage.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 #include <touchgfx/EasingEquations.hpp>
 #include <touchgfx/mixins/FadeAnimator.hpp>
+#include <touchgfx/mixins/MoveAnimator.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -28,15 +30,16 @@ protected:
     /*
      * Member Declarations
      */
-    touchgfx::Box box1;
-    touchgfx::ClickListener< touchgfx::Image > rolex_urtavla;
-    touchgfx::Image rolex1_390_numbers1;
-    touchgfx::Box box2;
+    touchgfx::Box bgBox;
+    touchgfx::FadeAnimator< touchgfx::MoveAnimator< touchgfx::ScalableImage > > scalableImage1;
+    touchgfx::FadeAnimator< touchgfx::Image > rolex1_390_numbers1;
     touchgfx::Image rolex1_ring_3901;
+    touchgfx::Box box2;
     touchgfx::Image rolex_arrow1;
     touchgfx::FadeAnimator< touchgfx::Box > textBgBox;
     touchgfx::FadeAnimator< touchgfx::TextArea > textArea2;
     touchgfx::TextArea textArea1;
+    touchgfx::ClickListener< touchgfx::Image > rolex_urtavla;
 
 private:
 
