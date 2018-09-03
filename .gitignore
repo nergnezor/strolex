@@ -4,3 +4,4 @@ touchgfx
 simulator
 *.log
 generated
+.vscode/.*

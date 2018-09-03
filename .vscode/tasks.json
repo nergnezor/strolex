@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "echo",
+            "label": "build",
             "type": "shell",
             // "command": "make",
             "command": "/c/Users/erikr/Downloads/make.exe",
@@ -18,7 +18,7 @@
                 // "-f", "simulator/gcc/Makefile"
                 "-f",
                 "target/gcc/Makefile",
-                "flash"
+                // "flash"
             ],
             // "options": {
             //     "shell": {
