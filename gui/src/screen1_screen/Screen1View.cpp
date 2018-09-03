@@ -7,9 +7,11 @@
 #include <touchgfx/widgets/TextureMapper.hpp>
 
 #define D 390
+#define BEZEL 40
+#define D_URTAVLA (390 - (2 * BEZEL))
+#define RATIO_URTAVLA (D_URTAVLA / (float)D)
 #define CANVAS_BUFFER_SIZE (3600)
 
-static float angle = 0.0f;
 static volatile bool isAnimating = false;
 static volatile bool looping = true;
 static int demoI = 0;
@@ -20,25 +22,13 @@ Screen1View::Screen1View()
 
 {}
 
-/*
- * Creates a gauge textureMapper using a texture mapper
- */
-// void Screen1View::setupTextureMapper(TextureMapper& textureMapper, const
-// BitmapId bitmapId,
-//                             int16_t clockRotationCenterX,
-//                             int16_t clockRotationCenterY,
-//                             int16_t rotationCenterX, int16_t rotationCenterY,
-//                             int width, int height) {
 void Screen1View::setupTextureMapper(TextureMapper& textureMapper,
                                      Image* image) {
   //   Image* image = &rolex1_ring_3901;
   int16_t width = image->getWidth();
-  int16_t height = image->getHeight();
   textureMapper.setBitmap(Bitmap(image->getBitmap()));
-  textureMapper.setWidth(width);
-  textureMapper.setHeight(height);
-  //   textureMapper.setWidth(D);
-  //   textureMapper.setHeight(D);
+  textureMapper.setWidth(D);
+  textureMapper.setHeight(D);
   textureMapper.setXY(0, 0);
   textureMapper.setBitmapPosition(D / 2 - width / 2, D / 2 - D / 2);
   textureMapper.setCameraDistance(300.0f);
@@ -47,6 +37,8 @@ void Screen1View::setupTextureMapper(TextureMapper& textureMapper,
   textureMapper.setCamera(textureMapper.getOrigoX(), textureMapper.getOrigoY());
   textureMapper.setRenderingAlgorithm(TextureMapper::BILINEAR_INTERPOLATION);
   //   textureMapper.setVisible(true);
+  add(textureMapper);
+  textureMapper.setVisible(false);
   remove(*image);
 }
 
@@ -55,10 +47,11 @@ void Screen1View::setupScreen() {
 
   setupTextureMapper(textureMapper1, &rolex1_ring_3901);
   textureMapper1.setTextureMapperAnimationEndedAction(animationEndedCallback);
-  textureMapper1.setVisible(true);
-  add(textureMapper1);
-  //   setupTextureMapper(textureMapper2, &rolex_arrow1);
-  //   textureMapper2.setTextureMapperAnimationEndedAction(animationEndedCallback);
+  scalableImage1.setWidth(D_URTAVLA);
+
+  setupTextureMapper(textureMapper2, &rolex_arrow1);
+  textureMapper2.setTextureMapperAnimationEndedAction(animationEndedCallback);
+  textureMapper2.setScale(RATIO_URTAVLA);
 
   remove(rolex_urtavla);
   add(rolex_urtavla);
@@ -89,86 +82,50 @@ void Screen1View::handleTickEvent() {
     demo();
   }
 }
-void Screen1View::Rotate(touchgfx::AnimationTextureMapper& src,
-                         float endValue) {
-  isAnimating = true;
-  // if (!isAnimating)
-  {
-    angle = angle == 0 ? endValue : 0;
-
-    src.setupAnimation(AnimationTextureMapper::Z_ROTATION, angle, 4, 0,
-                       //    EasingEquations::cubicEaseInOut);
-                       EasingEquations::linearEaseNone);
-    // src.setupAnimation(AnimationTextureMapper::SCALE,
-    //                    src.getScale() * (D - 80) / D, 20, 0);
-    // if (src.getScale() == 1)
-    //   src.setupAnimation(AnimationTextureMapper::SCALE, 0.7f, 10, 0);
-    // else
-    //   src.setupAnimation(AnimationTextureMapper::SCALE, 1.0f, 5, 0);
-    src.startAnimation();
-  }
-}
 
 void Screen1View::animationEndedCallbackHandler(
     const touchgfx::AnimationTextureMapper& src) {
-  static bool shrank = false;
   if (&src == &textureMapper1) {
-    isAnimating = false;
-
-    if (!shrank) {
-      shrank = true;
-      Rotate(textureMapper1, 0);
-    } else {
-      shrank = false;
-      textureMapper1.setVisible(false);
-      scalableImage1.setVisible(true);
-      textureMapper1.invalidate();
-      ++demoI;
-    }
+    textureMapper1.setVisible(false);
   }
-  //   if (&src == &textureMapper2) {
-  //     isAnimating = false;
-
-  //     if (!shrank) {
-  //       shrank = true;
-  //       Rotate(textureMapper1, 0);
-  //     } else {
-  //       shrank = false;
-  //       textureMapper1.setVisible(false);
-  //       scalableImage1.setVisible(true);
-  //       scalableImage1.invalidate();
-  //       ++demoI;
-  //     }
-  //   }
+  if (&src == &textureMapper2) {
+    textureMapper2.setVisible(false);
+  }
+  isAnimating = false;
+  scalableImage1.setVisible(true);
+  src.invalidate();
+  ++demoI;
 }
 
-void Screen1View::bezelRotate(AnimationTextureMapper& src, float endValue) {
+void Screen1View::textureAnimate(
+    AnimationTextureMapper::AnimationParameter param,
+    AnimationTextureMapper& src, float endValue, int duration) {
   if (!isAnimating) {
     isAnimating = true;
     scalableImage1.setVisible(false);
     src.setVisible(true);
-    Rotate(src, endValue);
+
+    src.setupAnimation(param, endValue, duration, 0,
+                       //    EasingEquations::cubicEaseInOut);
+                       EasingEquations::linearEaseNone);
+    src.startAnimation();
   }
 }
 
 void Screen1View::resize(ScalableImage* src, int speed, int targetSize) {
-  //   int rect.width = src->getWidth();
-  Rect rect = src->getAbsoluteRect();
-  int dd = (1 << speed) * (rect.width > targetSize ? -1 : 1);
-  rect.width += dd;
-  //   rect.y - dd / 2;
-  //   if (abs(rect.width + dd - targetSize) < abs(dd)) {
-  if ((rect.width >= targetSize && dd > 0) ||
-      (rect.width <= targetSize && dd < 0)) {
-    rect.width = targetSize;
-    // dd = (targetSize - rect.width) / 2;
+  int width = src->getWidth();
+  //   Rect rect = src->getAbsoluteRect();
+  int dd = (1 << speed) * (width > targetSize ? -1 : 1);
+  width += dd;
+  if ((width >= targetSize && dd > 0) || (width <= targetSize && dd < 0)) {
+    width = targetSize;
+    isAnimating = false;
     ++demoI;
   }
-  //   rect.x -= dd / 2;
-  src->setWidth(rect.width);
-  src->setHeight(rect.width);
-  int x = (D - rect.width) / 2;
-  src->setPosition(x, x, rect.width, rect.width);
+  src->setWidth(width);
+  src->setHeight(width);
+  int x = (D - width) / 2;
+  src->setPosition(x, x, width, width);
   bgBox.invalidate();
 }
 
@@ -183,28 +140,42 @@ void Screen1View::scrollText() {
 }
 
 void Screen1View::demo() {
-  demoI = demoI % 6;
+  demoI = demoI % 10;
   switch (demoI) {
     case 0:
-      bezelRotate(textureMapper1, 0.01f);
+      textureAnimate(AnimationTextureMapper::SCALE, textureMapper2, 1, 50);
       break;
     case 1:
-      resize(&scalableImage1, 2, D - 80);
+      textureAnimate(AnimationTextureMapper::Z_ROTATION, textureMapper2,
+                     textureMapper2.getZAngle() + 2.2 * PI, 50);
       break;
     case 2:
-      resize(&scalableImage1, 2, D);
+      textureAnimate(AnimationTextureMapper::SCALE, textureMapper2,
+                     RATIO_URTAVLA, 20);
       break;
     case 3:
-      resize(&scalableImage1, 4, D - 80);
+      resize(&scalableImage1, 4, D);
       break;
     case 4:
-      scrollText();
+      resize(&scalableImage1, 4, D_URTAVLA);
       break;
     case 5:
-      bezelRotate(textureMapper2, 0.1f);
+      scrollText();
       break;
     case 6:
-      resize(&scalableImage1, 4, D - 80);
+      resize(&scalableImage1, 5, D);
+      break;
+    case 7:
+      textureAnimate(AnimationTextureMapper::Z_ROTATION, textureMapper1, 0.3f,
+                     5);
+      break;
+    case 8:
+      textureAnimate(AnimationTextureMapper::Z_ROTATION, textureMapper1, 0, 5);
+      break;
+    case 9:
+      resize(&scalableImage1, 3, D_URTAVLA);
+      break;
+    case 10:
       break;
   }
 }

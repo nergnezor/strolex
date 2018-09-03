@@ -52,7 +52,6 @@ class Screen1View : public Screen1ViewBase {
   int tickCounter;
 
  private:
-  void Rotate(touchgfx::AnimationTextureMapper &src, float endValue);
   Circle circle;
   TextAreaWithOneWildcard txt;
   Unicode::UnicodeChar txtBuffer[10];
@@ -60,7 +59,10 @@ class Screen1View : public Screen1ViewBase {
   void demo(void);
   void resize(ScalableImage *scalableImage1, int speed, int size);
   void scrollText();
-  void bezelRotate(AnimationTextureMapper &src, float endValue);
+  void textureAnimate(AnimationTextureMapper::AnimationParameter param,
+                      AnimationTextureMapper &src, float endValue,
+                      int duration);
+  void fade(AnimationTextureMapper &src, float endValue, int duration);
 };
 
 #endif  // SCREEN1_VIEW_HPP
