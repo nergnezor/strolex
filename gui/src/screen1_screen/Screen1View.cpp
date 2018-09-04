@@ -53,8 +53,8 @@ void Screen1View::setupScreen() {
   textureMapper2.setTextureMapperAnimationEndedAction(animationEndedCallback);
   textureMapper2.setScale(RATIO_URTAVLA);
 
-  remove(rolex_urtavla);
-  add(rolex_urtavla);
+  //   remove(rolex_urtavla);
+  //   add(rolex_urtavla);
 
   bgBox.setColor(Color::getColorFrom24BitRGB(0, 0, 0));
 
@@ -109,6 +109,19 @@ void Screen1View::textureAnimate(
                        //    EasingEquations::cubicEaseInOut);
                        EasingEquations::linearEaseNone);
     src.startAnimation();
+    // textArea3.set
+    // textArea3Buffer
+    // char text[] = "erik";
+    // Unicode::UnicodeChar erik[5] = {"bajs"};
+    // Unicode::strncpy(erik, text, 5);
+    // Unicode::UnicodeChar* const test = textArea3.getWildcard();
+    // Unicode::strncpy(test, "Bajs", 5);
+    Unicode::strncpy(textArea3Buffer, "Bajs", 5);
+    // erik
+    // Unicode::snprintf(textArea3Buffer, 10, "%s", "erik");
+    // Unicode::snprintf(textArea3Buffer, 10, "%s", erik);
+    // Unicode::snprintf(textArea3Buffer, 10, "%s", Unicode::UnicodeChar);
+    textArea3.invalidate();
   }
 }
 
