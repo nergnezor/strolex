@@ -1,0 +1,36 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "BSP_USE_CMSIS_OS",
+                "VECT_TAB_OFFSET=0x00",
+                "ST",
+                "USE_BPP=24",
+                "USE_OS_SYSTICK",
+                "STM32L4R9xx",
+                "USE_HAL_DRIVER",
+                "USE_STM32L4R9I_DISCO_REVB__N",
+                "USE_GVO_390x390",
+                "USE_ROCKTECH_480x272___N",
+                "USE_IOEXPANDER",
+                "USE_LEDS",
+                "USE_OSPI_NOR",
+                "BSP_LCD_COLOR_DEPTH_24_BPP",
+                "BSP_USE_CMSIS_OS",
+                "xWA_RESET_AFTER_IDD_MEASURE"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
