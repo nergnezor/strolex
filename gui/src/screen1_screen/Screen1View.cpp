@@ -19,10 +19,29 @@ static int demoI = 0;
 Screen1View::Screen1View()
     : ImageClickedCallback(this, &Screen1View::ImageClickHandler)
     , animationEndedCallback(this, &Screen1View::animationEndedCallbackHandler)
-
+    , animationEndedCallback2(this, &Screen1View::animationEndedCallbackHandler2)
 {
 }
 
+void Screen1View::setupAnimation(AnimatedImage& animatedImage)
+{
+    animatedImage.setXY(0, 0);
+    animatedImage.setBitmaps(BITMAP_BEZEL360_00_ID, BITMAP_BEZEL360_44_ID);
+    animatedImage.setUpdateTicksInterval(2);
+    // animatedImage.startAnimation(false, true, false);
+    animatedImage.setDoneAction(animationEndedCallback2);
+    add(animatedImage);
+}
+
+// void Screen1ViewBase::animationEndedCallbackHandler(const SkipRect<AnimatedImage>& src)
+// {
+//     if (&src == &animatedImage1) {
+//         //Interaction1
+//         //When animatedImage1 animation ended call virtual function
+//         //Call erik
+//         erik();
+//     }
+// }
 void Screen1View::setupTextureMapper(TextureMapper& textureMapper, Image* image)
 {
     //   Image* image = &rolex1_ring_3901;
@@ -58,8 +77,8 @@ void Screen1View::setupScreen()
     textureMapper2.setTextureMapperAnimationEndedAction(animationEndedCallback);
     textureMapper2.setScale(RATIO_URTAVLA);
 
-    //   remove(rolex_urtavla);
-    //   add(rolex_urtavla);
+    remove(rolex_urtavla);
+    add(rolex_urtavla);
 
     bgBox.setColor(Color::getColorFrom24BitRGB(0, 0, 0));
 
@@ -78,6 +97,20 @@ void Screen1View::setupScreen()
     //     180, 0,
     //     EasingEquations::linearEaseNone);
     // textureMapper1.startAnimation();
+    // animatedImage1.animationDoneAction(&animatedImage_animationEndedCallback);
+    // animatedImage2 = &animatedImage1;
+
+    // SkipRect<AnimatedImage&> animatedImage2 = &animatedImage1;
+    // AnimatedImage& animatedImage2 = animatedImage1;
+    // (SkipRect<AnimatedImage&>)animatedImage2.sk
+    // animatedImage2-> = animatedImage1;
+    // (SkipRect<AnimatedImage>)animatedImage1.setSkipRect();
+    // AnimatedImage* erik = &animatedImage1;
+
+    // SkipRect <
+    setupAnimation(animatedImage2);
+    animatedImage2.setSkipRect(rect);
+    animatedImage2.startAnimation(false, true, false);
 }
 
 void Screen1View::updateTxt(int newValue)
@@ -120,6 +153,17 @@ void Screen1View::animationEndedCallbackHandler(
     scalableImage1.setVisible(true);
     src.invalidate();
     ++demoI;
+}
+
+void Screen1View::animationEndedCallbackHandler2(
+    const touchgfx::AnimatedImage& src)
+{
+    animatedImage2.startAnimation(true);
+}
+
+void Screen1View::erik()
+{
+    animatedImage1.startAnimation(!animatedImage1.isReverse());
 }
 
 void Screen1View::textureAnimate(AnimationTextureMapper::AnimationParameter param,

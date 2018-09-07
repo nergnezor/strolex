@@ -1,9 +1,12 @@
 #SingleInstance force
 
-nFrames := 10
+nFrames := 18
 dr := 1
-i := 11
+iStart := 32
+i := iStart
 rotate := i
+firstTime := true
+
 ^j::
 ; Send ^a
 ; Send ^+r
@@ -12,29 +15,32 @@ Loop, %nFrames%
     ; Send ^c
     ; Send ^+v
     Send ^+z
+    Sleep, 500
     Send %rotate%
-    Sleep, 300
+    Sleep, 500
     Send {Return}
     rotate += dr
 
+    Sleep, 500
     Send ^+s
-    Sleep, 300
-    Send {Left}{Left}{Left}{Left}
+    Sleep, 500
+    Send {Right}{Left}{Left}{Left}{Left}
     Send {BackSpace}
-    if i > 10
+    if (i > 9)
         Send {BackSpace}
-        if i > 100
-            Send {BackSpace}
-
-    ; MsgBox, [ "", "hej", %i%, 2000]
+    if (i > 99)
+        Send {BackSpace}
     Send %i%
+    ; MsgBox, [ "", "firstTime", (i > 10), 1000]
     Send {Return}
-    Sleep, 300
+    Sleep, 500
     Send {Return}
     i += 1
 
-    Sleep, 500
+    Sleep, 1000
     Send ^z
+    Sleep, 500
+    ; firstTime = false
 }
 ; width := Clipboard
 ; newWidth := wis

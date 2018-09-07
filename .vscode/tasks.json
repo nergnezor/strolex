@@ -20,6 +20,20 @@
                 "target/gcc/Makefile",
                 // "flash"
             ],
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false
+            },
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ]
+            }
             // "options": {
             //     "shell": {
             //         // "executable": "%PROGRAMFILES%/Git/bin/sh.exe"
