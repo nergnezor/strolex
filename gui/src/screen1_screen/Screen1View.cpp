@@ -108,9 +108,9 @@ void Screen1View::setupScreen()
     // AnimatedImage* erik = &animatedImage1;
 
     // SkipRect <
-    setupAnimation(animatedImage2);
-    animatedImage2.setSkipRect(rect);
-    animatedImage2.startAnimation(false, true, false);
+    // setupAnimation(animatedImage2);
+    // animatedImage2.setSkipRect(rect);
+    // animatedImage2.startAnimation(false, true, false);
 }
 
 void Screen1View::updateTxt(int newValue)
@@ -163,7 +163,12 @@ void Screen1View::animationEndedCallbackHandler2(
 
 void Screen1View::erik()
 {
-    animatedImage1.startAnimation(!animatedImage1.isReverse());
+    if (!animatedImage1.isReverse())
+        animatedImage1.startAnimation(!animatedImage1.isReverse());
+    else {
+        animatedImage1.setVisible(false);
+        looping = true;
+    }
 }
 
 void Screen1View::textureAnimate(AnimationTextureMapper::AnimationParameter param,
@@ -220,7 +225,7 @@ void Screen1View::scrollText()
 
 void Screen1View::demo()
 {
-    demoI = demoI % 10;
+    demoI = demoI % 12;
     switch (demoI) {
     case 0:
         textureAnimate(AnimationTextureMapper::SCALE, textureMapper2, 1, 50);
@@ -249,15 +254,21 @@ void Screen1View::demo()
         break;
     case 7:
         textureAnimate(
-            AnimationTextureMapper::Z_ROTATION, textureMapper1, 2.3f, 50);
+            AnimationTextureMapper::Z_ROTATION, textureMapper1, 0.3f, 5);
         break;
     case 8:
-        textureAnimate(AnimationTextureMapper::Z_ROTATION, textureMapper1, 0, 50);
+        textureAnimate(AnimationTextureMapper::Z_ROTATION, textureMapper1, 0, 5);
         break;
     case 9:
         resize(&scalableImage1, 3, D_URTAVLA);
         break;
     case 10:
+        ++demoI;
+        looping = false;
+        animatedImage1.setVisible(true);
+        animatedImage1.startAnimation(false);
+        break;
+    case 11:
         break;
     }
 }

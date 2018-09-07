@@ -213,9 +213,9 @@
           {
             "FileNameFirst": "bezel360_00.png",
             "FileNameLast": "bezel360_44.png",
-            "UpdateTicksInterval": 40,
+            "UpdateTicksInterval": 1,
             "Alpha": 255,
-            "StartOnLoad": false,
+            "StartOnLoad": true,
             "ReverseEnabled": false,
             "LoopEnabled": false,
             "AnimationEndedCallback": false,
